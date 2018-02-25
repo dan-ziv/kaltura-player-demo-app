@@ -1,0 +1,60 @@
+{
+  "targetId": "player-container",
+  "provider": {
+    "partnerId": 1091,
+    "env": {
+      "cdnUrl": "//qa-apache-php7.dev.kaltura.com/",
+      "serviceUrl": "//qa-apache-php7.dev.kaltura.com/api_v3"
+    }
+  },
+  "player": {
+    "logLevel": "ERROR",
+    "type": "Unknown",
+    "sources": {
+      "hls": [],
+      "dash": [],
+      "progressive": []
+    },
+    "plugins": {},
+    "metadata": {
+      "poster": "",
+      "description": ""
+    },
+    "playback": {
+      "audioLanguage": "",
+      "textLanguage": "",
+      "useNativeTextTrack": false,
+      "volume": 1,
+      "startTime": 0,
+      "playsinline": true,
+      "preload": "none",
+      "autoplay": false,
+      "allowMutedAutoPlay": true,
+      "muted": false,
+      "options": {
+        "html5": {
+          "hls": {},
+          "dash": {}
+        }
+      },
+      "preferNative": {
+        "hls": false,
+        "dash": false
+      },
+      "streamPriority": [
+        {
+          "engine": "html5",
+          "format": "hls"
+        },
+        {
+          "engine": "html5",
+          "format": "dash"
+        },
+        {
+          "engine": "html5",
+          "format": "progressive"
+        }
+      ]
+    }
+  }
+}
