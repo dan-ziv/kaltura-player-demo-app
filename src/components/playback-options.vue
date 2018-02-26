@@ -1,12 +1,12 @@
 <template>
   <el-form :size="size" label-position="left" ref="form" :model="config" label-width="150px">
-    <el-form-item v-show="!beforeSetup" label="Auto Play">
+    <el-form-item label="Auto Play">
       <el-checkbox v-model="config.autoplay"/>
     </el-form-item>
-    <el-form-item label-width="200px" v-show="!beforeSetup" label="Allow Muted Auto Play">
+    <el-form-item label-width="200px" label="Allow Muted Auto Play">
       <el-checkbox v-model="config.allowMutedAutoPlay"/>
     </el-form-item>
-    <el-form-item v-show="!beforeSetup" label="Preload">
+    <el-form-item label="Preload">
       <el-checkbox v-model="preload"/>
     </el-form-item>
     <el-form-item label="Muted">
@@ -35,7 +35,7 @@
 
 <script>
   export default {
-    props: ['size', 'beforeSetup'],
+    props: ['size'],
     created() {
       if (this.$store.state.player) {
         this.cachedConfig = this.$store.state.player.config.playback;

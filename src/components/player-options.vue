@@ -22,7 +22,7 @@
     </el-form-item>
     <el-form-item label="Playback">
       <br>
-      <PlaybackOptions beforeSetup="true" size=""/>
+      <PlaybackOptions/>
     </el-form-item>
   </el-form>
 </template>
