@@ -25,6 +25,9 @@
           <StateHistoryConsole/>
         </el-card>
       </el-row>
+      <el-row class="padding-sm">
+        <LocalStorageButton/>
+      </el-row>
     </el-aside>
     <el-main>
       <el-card class="box-card">
@@ -53,7 +56,12 @@
         </el-card>
       </el-row>
       <el-row class="padding-sm">
-        <LocalStorageButton/>
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>Tracks Info</span>
+          </div>
+          <TracksInfo size="mini"/>
+        </el-card>
       </el-row>
     </el-aside>
   </el-container>
@@ -68,6 +76,7 @@
   import EventConsole from './event-console'
   import PlaybackOptions from './playback-options'
   import LocalStorageButton from './local-storage-button'
+  import TracksInfo from './tracks-info'
 
   export default {
     components: {
@@ -78,7 +87,8 @@
       EventConsole,
       PlayerPlaceholder,
       PlaybackOptions,
-      LocalStorageButton
+      LocalStorageButton,
+      TracksInfo
     }
   }
 </script>

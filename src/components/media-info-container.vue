@@ -23,7 +23,7 @@
                          class="inline-input"
                          v-model="entry"
                          :fetch-suggestions="querySearch"
-                         placeholder="entryID/.mpd/.m3u8/.mp4">
+                         placeholder="Enter .mpd/.m3u8/.mp4 URL or a valid entry ID">
           <template slot-scope="props">
             <div class="value">{{props.item.value}} - {{props.item.description}}</div>
           </template>
