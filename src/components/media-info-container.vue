@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-row>
-      <el-col :span="3">
+      <el-col :span="5">
         <div style="float: right">
           <el-dropdown @command="onPrioritySelected">
             <el-button type="primary">
@@ -18,7 +18,7 @@
           </el-dropdown>
         </div>
       </el-col>
-      <el-col :span="16">
+      <el-col :span="14">
         <el-autocomplete style="width:100%;"
                          class="inline-input"
                          v-model="entry"
