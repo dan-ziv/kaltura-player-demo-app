@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <div class="state-history-console">
-      <div v-for="state in stateHistory" :key="state.type" class="text item font-sm">
+      <div v-for="state in stateHistory" :key="state.index" class="text item font-sm">
         <span class="state-info-type">{{state.time}}: {{state.type}}</span>
       </div>
     </div>
@@ -22,7 +22,8 @@
       this.player.addEventListener(this.player.Event.PLAYER_STATE_CHANGED, (e) => {
         this.stateHistory.push({
           time: new Date().toLocaleTimeString(),
-          type: e.payload.oldState.type
+          type: e.payload.oldState.type,
+          index: this.stateHistory.length
         });
       });
     },
