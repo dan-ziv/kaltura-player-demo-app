@@ -36,6 +36,13 @@
 <script>
   export default {
     props: ['size'],
+    updated() {
+      if (this.$store.state.player) {
+        this.$store.state.player.configure({
+          playback: this.config
+        });
+      }
+    },
     created() {
       if (this.$store.state.player) {
         this.cachedConfig = this.$store.state.player.config.playback;
