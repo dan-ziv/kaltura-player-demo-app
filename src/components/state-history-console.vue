@@ -1,23 +1,20 @@
 <template>
   <el-row>
-    <el-row>
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>State History</span>
-        </div>
-        <div class="state-history-console">
-          <div v-for="state in stateHistory" :key="state.type" class="text item font-sm">
-            <span class="state-info-type">{{state.time}}: {{state.type}}</span>
-          </div>
-        </div>
-      </el-card>
-    </el-row>
+    <div class="state-history-console">
+      <div v-for="state in stateHistory" :key="state.type" class="text item font-sm">
+        <span class="state-info-type">{{state.time}}: {{state.type}}</span>
+      </div>
+    </div>
   </el-row>
 </template>
 
 <script>
   export default {
-    props: ['playerObj'],
+    computed: {
+      player() {
+        return this.$store.state.player;
+      }
+    },
     created() {
       this.player.addEventListener(this.player.Event.SOURCE_SELECTED, () => {
         this.stateHistory = [];
@@ -35,7 +32,6 @@
     },
     data() {
       return {
-        player: this.playerObj,
         stateHistory: []
       }
     }

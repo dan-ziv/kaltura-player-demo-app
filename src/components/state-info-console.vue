@@ -1,22 +1,21 @@
 <template>
   <el-row>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>State Info</span>
-      </div>
-      <div class="text item font-sm">
-        <b>Previous State:</b> <span class="state-info-type">{{previousState}}</span>
-      </div>
-      <div class="text item font-sm">
-        <b>Current State:</b> <span class="state-info-type">{{currentState}}</span>
-      </div>
-    </el-card>
+    <div class="text item font-sm">
+      <b>Previous State:</b> <span class="state-info-type">{{previousState}}</span>
+    </div>
+    <div class="text item font-sm">
+      <b>Current State:</b> <span class="state-info-type">{{currentState}}</span>
+    </div>
   </el-row>
 </template>
 
 <script>
   export default {
-    props: ['playerObj'],
+    computed: {
+      player() {
+        return this.$store.state.player;
+      }
+    },
     created() {
       this.player.addEventListener(this.player.Event.PLAYER_STATE_CHANGED, (e) => {
         this.currentState = e.payload.newState.type;
@@ -25,7 +24,6 @@
     },
     data() {
       return {
-        player: this.playerObj,
         currentState: '',
         previousState: ''
       }

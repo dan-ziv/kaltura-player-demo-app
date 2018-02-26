@@ -1,8 +1,5 @@
 <template>
-  <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>Media Info</span>
-    </div>
+  <el-row>
     <el-row>
       <el-col :span="3">
         <div style="float: right">
@@ -93,7 +90,7 @@
         </el-col>
       </div>
     </el-row>
-  </el-card>
+  </el-row>
 </template>
 
 <script>
@@ -101,7 +98,11 @@
   import Entries from '../data/entries'
 
   export default {
-    props: ['playerObj'],
+    computed: {
+      player() {
+        return this.$store.state.player;
+      }
+    },
     mounted() {
       this.entries = Entries;
       if (this.isOTT()) {
@@ -176,7 +177,6 @@
     },
     data() {
       return {
-        player: this.playerObj,
         entries: [],
         contextTypes: [],
         mediaTypes: [],

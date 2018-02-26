@@ -1,25 +1,17 @@
 {
   "targetId": "player-container",
+  "disableUserCache": false,
+  "logLevel": "ERROR",
   "provider": {
     "partnerId": 1091,
+    "ks": "",
     "env": {
       "cdnUrl": "//qa-apache-php7.dev.kaltura.com/",
       "serviceUrl": "//qa-apache-php7.dev.kaltura.com/api_v3"
     }
   },
   "player": {
-    "logLevel": "ERROR",
-    "type": "Unknown",
-    "sources": {
-      "hls": [],
-      "dash": [],
-      "progressive": []
-    },
     "plugins": {},
-    "metadata": {
-      "poster": "",
-      "description": ""
-    },
     "playback": {
       "audioLanguage": "",
       "textLanguage": "",
