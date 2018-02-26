@@ -35,6 +35,14 @@
           <PlayerOptions/>
         </el-card>
       </div>
+      <div class="padding-sm">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>UI Options</span>
+          </div>
+          <UIOptions/>
+        </el-card>
+      </div>
     </el-main>
     <el-aside width="350px"/>
   </el-container>
@@ -44,6 +52,7 @@
   import ProviderOptions from './provider-options'
   import GenericOptions from './generic-options'
   import PlayerOptions from './player-options'
+  import UIOptions from './ui-options'
 
   export default {
     computed: {
@@ -54,7 +63,8 @@
     components: {
       ProviderOptions,
       GenericOptions,
-      PlayerOptions
+      PlayerOptions,
+      UIOptions
     },
     methods: {
       setupPlayer() {

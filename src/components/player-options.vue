@@ -61,7 +61,7 @@
     },
     computed: {
       config() {
-        return this.$store.state.config;
+        return this.$store.state.config.player;
       }
     },
     data() {
