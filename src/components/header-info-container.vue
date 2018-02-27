@@ -38,7 +38,7 @@
   }
 
   h3 {
-    color: darkcyan;
+    color: #115fa4;
     background-color: #f0f0f075;
     border-radius: 30px;
   }
