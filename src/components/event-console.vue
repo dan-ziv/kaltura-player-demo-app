@@ -7,7 +7,7 @@
         </div>
       </el-col>
       <el-col :span="6">
-        <el-button type="warning" @click="events=[]">Clear <i class="el-icon-delete"></i></el-button>
+        <el-button type="danger" @click="events=[]">Clear <i class="el-icon-delete"></i></el-button>
       </el-col>
     </el-row>
     <el-row>
