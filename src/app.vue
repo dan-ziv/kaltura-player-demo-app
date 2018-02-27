@@ -32,7 +32,7 @@
 
 <style>
   body {
-    font-family: Menlo;
+    font-family: 'Barlow';
     width: 100%;
     overflow-x: hidden;
   }
