@@ -1,11 +1,8 @@
 <template>
   <el-row>
-    <el-col :span="2">
-      <div class="grid-content"></div>
-    </el-col>
-    <el-col :span="13">
+    <center>
       <div id="player-placeholder" class="padding"></div>
-    </el-col>
+    </center>
   </el-row>
 </template>
 
