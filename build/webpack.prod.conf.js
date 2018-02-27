@@ -106,7 +106,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       async: 'vendor-async',
       children: true,
       minChunks: 3
-    });
+    })
   ]
 });
 

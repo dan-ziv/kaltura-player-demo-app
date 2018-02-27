@@ -39,7 +39,7 @@ module.exports = {
     alias: {
       'webfontloader': path.resolve(__dirname, "./node_modules/webfontloader/webfontloader.js"),
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
