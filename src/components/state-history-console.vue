@@ -20,16 +20,12 @@
         this.stateHistory = [];
       });
       this.player.addEventListener(this.player.Event.PLAYER_STATE_CHANGED, (e) => {
-        this.stateHistory.push({
+        this.stateHistory.unshift({
           time: new Date().toLocaleTimeString(),
           type: e.payload.oldState.type,
           index: this.stateHistory.length
         });
       });
-    },
-    updated() {
-      const el = this.$el.querySelector('.state-history-console');
-      el.scrollTop = el.scrollHeight;
     },
     data() {
       return {
