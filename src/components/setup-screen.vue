@@ -7,7 +7,7 @@
           <h1>Configuration</h1>
         </el-col>
         <el-col :span="4">
-          <el-button v-loading="setup" style="margin-top: 20px;" type="primary" @click="setupPlayer">Setup Player
+          <el-button v-loading="setup" style="margin-top: 20px; width: 100%" type="primary" @click="setupPlayer">Setup Player
           </el-button>
         </el-col>
       </el-row>
