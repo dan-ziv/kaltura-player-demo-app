@@ -4,7 +4,7 @@
       <h1>{{title}}</h1>
       <h3>Demo Page</h3>
       <el-row class="version">
-        <el-tag type="success">v{{version}}</el-tag>
+        <el-tag>v{{version}}</el-tag>
       </el-row>
       <p class="links">
         <a v-bind:href="docsUrl" target="_blank">Documentation</a> |
