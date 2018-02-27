@@ -26,7 +26,14 @@
         </el-card>
       </el-row>
       <el-row class="padding-sm">
-        <LocalStorageButton/>
+        <el-card class="box-card">
+          <div class="padding-sm">
+            <CopySourceButton/>
+          </div>
+          <div class="padding-sm">
+            <LocalStorageButton/>
+          </div>
+        </el-card>
       </el-row>
     </el-aside>
     <el-main>
@@ -77,6 +84,7 @@
   import PlaybackOptions from './playback-options'
   import LocalStorageButton from './local-storage-button'
   import TracksInfo from './tracks-info'
+  import CopySourceButton from './copy-source'
 
   export default {
     components: {
@@ -88,7 +96,8 @@
       PlayerPlaceholder,
       PlaybackOptions,
       LocalStorageButton,
-      TracksInfo
+      TracksInfo,
+      CopySourceButton
     }
   }
 </script>
