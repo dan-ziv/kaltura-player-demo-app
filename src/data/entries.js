@@ -8,10 +8,6 @@ const Entries = [
     description: 'Long VOD'
   },
   {
-    value: '0_wifqaipd',
-    description: 'Basic VOD'
-  },
-  {
     value: '0_wu32qrt3',
     description: 'ABR'
   },
