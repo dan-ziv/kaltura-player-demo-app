@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-tooltip class="item" effect="dark" content="Clear the browser's local storage" placement="top-start">
-      <el-button class="btn" type="info" round :loading="loading" @click="clearStorage">Clear Storage <i
+      <el-button class="btn" type="primary" plain :loading="loading" @click="clearStorage">Clear Storage <i
         class="el-icon-delete"></i>
       </el-button>
     </el-tooltip>

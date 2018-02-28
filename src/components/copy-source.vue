@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-tooltip class="item" effect="dark" content="Copy playing source url to clipboard" placement="top-start">
-      <el-button class="btn" type="info" round :disabled="!src" @click="onClick">Copy Source <i
+      <el-button class="btn" type="primary" plain :disabled="!src" @click="onClick">Copy Source <i
         class="el-icon-edit-outline"></i>
       </el-button>
     </el-tooltip>

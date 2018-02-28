@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-tooltip class="item" effect="dark" content="Generate test page url" placement="top-start">
-      <el-button class="btn" type="info" round :loading="generating" @click="generate">Generate Test Page <i
+      <el-button class="btn" type="primary" plain :loading="generating" @click="generate">Generate Test Page <i
         class="el-icon-tickets"></i>
       </el-button>
     </el-tooltip>
