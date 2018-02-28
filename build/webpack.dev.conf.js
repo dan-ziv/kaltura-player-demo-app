@@ -45,6 +45,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new CopyWebpackPlugin([{
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-ovp-player.js'),
+      to: '.'
+    }, {
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-tv-player.js'),
+      to: '.'
+    }]),
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),

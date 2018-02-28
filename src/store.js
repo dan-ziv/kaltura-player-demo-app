@@ -23,6 +23,9 @@ const store = new Vuex.Store({
     },
     updateAdTagUrl(state, adtag) {
       state.config.player.plugins.ima.adTagUrl = adtag;
+    },
+    updateConfig(state, config) {
+      state.config = config;
     }
   }
 });

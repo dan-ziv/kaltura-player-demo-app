@@ -28,6 +28,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+    new CopyWebpackPlugin([{
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-ovp-player.js'),
+      to: '.'
+    }, {
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-tv-player.js'),
+      to: '.'
+    }]),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

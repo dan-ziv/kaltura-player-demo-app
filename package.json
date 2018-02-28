@@ -13,7 +13,8 @@
     "element-ui": "^2.2.0",
     "jsoncomp": "^1.6.1",
     "vue": "^2.5.2",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "kaltura-player-js": "https://github.com/kaltura/kaltura-player-js.git#master"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
