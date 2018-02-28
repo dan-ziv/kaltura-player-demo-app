@@ -5,11 +5,13 @@
         class="el-icon-edit-outline"></i>
       </el-button>
     </el-tooltip>
-    <input id="src-text" title="src" type="text" :value="src" v-show="copying"/>
+    <div @click="onClick" :id="sourceHiddenDivId" v-show="false">{{src}}</div>
   </div>
 </template>
 
 <script>
+  import {copyToClipboard} from '../utils/copy-to-clipboard'
+
   export default {
     mounted() {
       this.player.addEventListener(this.player.Event.SOURCE_SELECTED, (e) => {
@@ -18,11 +20,7 @@
     },
     methods: {
       onClick() {
-        this.copying = true;
-        const input = document.getElementById("src-text");
-        input.select();
-        document.execCommand("copy");
-        this.copying = false;
+        copyToClipboard(this.sourceHiddenDivId);
       }
     },
     computed: {
@@ -33,7 +31,7 @@
     data() {
       return {
         src: '',
-        copying: false
+        sourceHiddenDivId: 'src-div'
       };
     }
   }
