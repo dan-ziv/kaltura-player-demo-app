@@ -3,6 +3,9 @@
     <el-form-item label="Partner ID">
       <el-input v-model="config.partnerId"/>
     </el-form-item>
+      <el-form-item label="UI Conf ID">
+      <el-input v-model="config.uiConfId"/>
+    </el-form-item>
     <el-form-item label="KS">
       <el-input v-model="config.ks"/>
     </el-form-item>
