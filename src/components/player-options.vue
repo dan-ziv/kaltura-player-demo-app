@@ -1,5 +1,5 @@
 <template>
-  <el-form label-position="left" ref="form" :model="config" label-width="120px">
+  <el-form label-position="left" ref="form" label-width="120px">
     <el-form-item label="Plugins">
       <br>
       <PluginsConfig/>

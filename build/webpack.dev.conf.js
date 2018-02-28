@@ -49,7 +49,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-ovp-player.js'),
       to: '.'
     }, {
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-ovp-player.js.map'),
+      to: '.'
+    }, {
       from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-tv-player.js'),
+      to: '.'
+    }, {
+      from: path.resolve('./node_modules/kaltura-player-js/dist/kaltura-tv-player.js.map'),
       to: '.'
     }]),
     new webpack.DefinePlugin({
