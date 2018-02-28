@@ -18,14 +18,13 @@
       generate() {
         const config = this.$store.state.config;
         config.player = this.$store.state.player.config;
-        const version = KalturaPlayer.VERSION;
         const json = {
           config: config,
-          version: version
+          type: KalturaPlayer.PLAYER_TYPE
         };
         const compressedJSON = JSONC.compress(json);
         const encodedCompressedJSON = encodeURIComponent(JSON.stringify(compressedJSON));
-        this.url = window.location.href + '?generate=' + encodedCompressedJSON;
+        this.url = '?generate=' + encodedCompressedJSON;
         this.$alert(this.url, 'Generated Test Page URL', {
           customClass: 'box',
           confirmButtonText: 'Copy to clipboard',
@@ -54,6 +53,7 @@
 <style>
   .box {
     width: 50%;
+    max-height: 50%;
   }
 
   .btn {
