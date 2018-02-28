@@ -27,6 +27,12 @@
       </el-row>
       <el-row class="padding-sm">
         <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>Page Actions</span>
+          </div>
+          <div class="padding-sm">
+            <GeneratePageButton/>
+          </div>
           <div class="padding-sm">
             <CopySourceButton/>
           </div>
@@ -85,6 +91,7 @@
   import LocalStorageButton from './local-storage-button'
   import TracksInfo from './tracks-info'
   import CopySourceButton from './copy-source'
+  import GeneratePageButton from './generate-page'
 
   export default {
     components: {
@@ -97,7 +104,8 @@
       PlaybackOptions,
       LocalStorageButton,
       TracksInfo,
-      CopySourceButton
+      CopySourceButton,
+      GeneratePageButton
     }
   }
 </script>
