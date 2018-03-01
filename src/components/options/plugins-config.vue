@@ -10,8 +10,8 @@
 </template>
 
 <script>
-  import ImaPlugin from './ima-plugin'
-  import YouboraPlugin from './youbora-plugin'
+  import ImaPlugin from '../plugins/ima-plugin'
+  import YouboraPlugin from '../plugins/youbora-plugin'
 
   export default {
     components: {

@@ -1,17 +1,19 @@
 <template>
   <el-row v-loading="setup">
-    <el-col :span="6">
+    <el-col :span="7">
       <div class="grid-content"></div>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="9">
       <el-row>
-        <el-col :span="20">
+        <el-col :span="12">
           <h1>Configuration</h1>
         </el-col>
-        <el-col :span="4">
-          <el-button v-loading="setup" style="margin-top: 20px; width: 100%" type="primary" @click="setupPlayer">Setup
-            Player
-          </el-button>
+        <el-col :span="12">
+          <div style="position: relative;">
+            <el-button style="float: right; margin-top: 30px;" v-loading="setup" type="primary" @click="setupPlayer">Setup
+              Player
+            </el-button>
+          </div>
         </el-col>
       </el-row>
       <div class="padding-sm">
@@ -47,17 +49,17 @@
         </el-card>
       </div>
     </el-col>
-    <el-col :span="6">
+    <el-col :span="7">
       <div class="grid-content"></div>
     </el-col>
   </el-row>
 </template>
 
 <script>
-  import ProviderOptions from './provider-options'
-  import GenericOptions from './generic-options'
-  import PlayerOptions from './player-options'
-  import UIOptions from './ui-options'
+  import ProviderOptions from '../options/provider-options'
+  import GenericOptions from '../options/generic-options'
+  import PlayerOptions from '../options/player-options'
+  import UIOptions from '../options/ui-options'
 
   export default {
     computed: {

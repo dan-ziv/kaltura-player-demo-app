@@ -37,7 +37,7 @@
             <CopySourceButton/>
           </div>
           <div class="padding-sm">
-            <LocalStorageButton/>
+            <ClearStorageButton/>
           </div>
         </el-card>
       </el-row>
@@ -49,7 +49,7 @@
             <div slot="header" class="clearfix">
               <span>Media Info</span>
             </div>
-            <MediaInfoContainer/>
+            <MediaInfoConsole/>
           </el-card>
         </el-row>
         <PlayerPlaceholder/>
@@ -77,7 +77,7 @@
           <div slot="header" class="clearfix">
             <span>Tracks Info</span>
           </div>
-          <TracksInfo size="mini"/>
+          <TracksInfoConsole size="mini"/>
         </el-card>
       </el-row>
     </el-col>
@@ -85,29 +85,29 @@
 </template>
 
 <script>
-  import MediaInfoContainer from './media-info-container'
-  import EngineInfoConsole from './engine-info-console'
-  import StateInfoConsole from './state-info-console'
-  import StateHistoryConsole from './state-history-console'
-  import PlayerPlaceholder from './player-placeholder'
-  import EventConsole from './event-console'
-  import PlaybackOptions from './playback-options'
-  import LocalStorageButton from './local-storage-button'
-  import TracksInfo from './tracks-info'
-  import CopySourceButton from './copy-source'
-  import GeneratePageButton from './generate-page'
+  import MediaInfoConsole from '../consoles/media-info-console'
+  import EngineInfoConsole from '../consoles/engine-info-console'
+  import StateInfoConsole from '../consoles/state-info-console'
+  import StateHistoryConsole from '../consoles/state-history-console'
+  import EventConsole from '../consoles/event-console'
+  import TracksInfoConsole from '../consoles/tracks-info-console'
+  import PlayerPlaceholder from '../player-placeholder'
+  import PlaybackOptions from '../options/playback-options'
+  import ClearStorageButton from '../buttons/clear-storage'
+  import CopySourceButton from '../buttons/copy-source'
+  import GeneratePageButton from '../buttons/generate-page'
 
   export default {
     components: {
-      MediaInfoContainer,
+      MediaInfoConsole,
       EngineInfoConsole,
       StateInfoConsole,
       StateHistoryConsole,
       EventConsole,
       PlayerPlaceholder,
       PlaybackOptions,
-      LocalStorageButton,
-      TracksInfo,
+      ClearStorageButton,
+      TracksInfoConsole,
       CopySourceButton,
       GeneratePageButton
     }

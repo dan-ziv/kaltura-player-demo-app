@@ -11,7 +11,7 @@
 
 <script>
   import JSONC from 'jsoncomp'
-  import {copyToClipboard} from '../utils/copy-to-clipboard'
+  import {copyToClipboard} from '../../utils/copy-to-clipboard'
 
   export default {
     methods: {

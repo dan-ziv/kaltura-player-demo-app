@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import {copyToClipboard} from '../utils/copy-to-clipboard'
+  import {copyToClipboard} from '../../utils/copy-to-clipboard'
 
   export default {
     mounted() {

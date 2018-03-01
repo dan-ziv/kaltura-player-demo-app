@@ -94,8 +94,8 @@
 </template>
 
 <script>
-  import StreamPriority from '../data/stream-priority'
-  import Entries from '../data/entries'
+  import StreamPriority from '../../data/stream-priority'
+  import Entries from '../../data/entries'
 
   export default {
     computed: {

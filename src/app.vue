@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import SetupScreen from './components/setup-screen'
-  import DemoScreen from './components/demo-screen'
+  import SetupScreen from './components/screens/setup-screen'
+  import DemoScreen from './components/screens/demo-screen'
   import HeaderInfoContainer from './components/header-info-container'
 
   export default {
