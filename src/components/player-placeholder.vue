@@ -22,7 +22,7 @@
   }
 
   function addStyles(playerContainer) {
-    playerContainer.style.marginTop = "10px";
+    playerContainer.style.margin = "10px 10px 10px 10px";
     playerContainer.style.backgroundColor = "white";
     playerContainer.style.height = "360px";
     playerContainer.style.width = "640px";

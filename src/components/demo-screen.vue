@@ -1,6 +1,6 @@
 <template>
-  <el-container>
-    <el-aside width="350px" style="padding-left: 30px;">
+  <el-row>
+    <el-col :span="4">
       <el-row class="padding-sm">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -41,25 +41,29 @@
           </div>
         </el-card>
       </el-row>
-    </el-aside>
-    <el-main>
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>Media Info</span>
-        </div>
-        <MediaInfoContainer/>
-      </el-card>
-      <PlayerPlaceholder/>
-      <el-row class="padding">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span>Event Monitoring</span>
-          </div>
-          <EventConsole/>
-        </el-card>
+    </el-col>
+    <el-col :span="15">
+      <el-row class="padding-sm">
+        <el-row class="padding-sm">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>Media Info</span>
+            </div>
+            <MediaInfoContainer/>
+          </el-card>
+        </el-row>
+        <PlayerPlaceholder/>
+        <el-row class="padding-sm">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>Event Monitoring</span>
+            </div>
+            <EventConsole/>
+          </el-card>
+        </el-row>
       </el-row>
-    </el-main>
-    <el-aside width="400px" style="padding-right: 50px;">
+    </el-col>
+    <el-col :span="5">
       <el-row class="padding-sm">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -76,8 +80,8 @@
           <TracksInfo size="mini"/>
         </el-card>
       </el-row>
-    </el-aside>
-  </el-container>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

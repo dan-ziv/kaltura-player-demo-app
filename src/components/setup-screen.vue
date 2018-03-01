@@ -1,13 +1,16 @@
 <template>
-  <el-container v-loading="setup">
-    <el-aside width="350px"/>
-    <el-main>
+  <el-row v-loading="setup">
+    <el-col :span="6">
+      <div class="grid-content"></div>
+    </el-col>
+    <el-col :span="12">
       <el-row>
         <el-col :span="20">
           <h1>Configuration</h1>
         </el-col>
         <el-col :span="4">
-          <el-button v-loading="setup" style="margin-top: 20px; width: 100%" type="primary" @click="setupPlayer">Setup Player
+          <el-button v-loading="setup" style="margin-top: 20px; width: 100%" type="primary" @click="setupPlayer">Setup
+            Player
           </el-button>
         </el-col>
       </el-row>
@@ -43,9 +46,11 @@
           <UIOptions/>
         </el-card>
       </div>
-    </el-main>
-    <el-aside width="350px"/>
-  </el-container>
+    </el-col>
+    <el-col :span="6">
+      <div class="grid-content"></div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
