@@ -130,15 +130,15 @@
         };
       },
       onLoadClicked() {
+        if (!this.entry) return;
         this.isLoadingMedia = true;
-        const entryOrManifest = this.entry || this.entries[0].value;
         this.configureStreamPriority();
-        if (entryOrManifest.includes('.')) {
+        if (this.entry.includes('.')) {
           this.configureSource();
           setTimeout(() => this.isLoadingMedia = false, 500);
         } else {
           const mediaInfo = {
-            entryId: entryOrManifest
+            entryId: this.entry
           };
           if (this.options.ks) mediaInfo.ks = this.options.ks;
           if (this.isOTT()) {
@@ -181,7 +181,7 @@
         contextTypes: [],
         mediaTypes: [],
         isLoadingMedia: false,
-        entry: '',
+        entry: Entries[0].value,
         options: {
           ks: '',
           protocol: '',
