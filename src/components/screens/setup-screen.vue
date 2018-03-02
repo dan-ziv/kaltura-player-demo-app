@@ -79,6 +79,7 @@
   import GenericOptions from '../options/generic-options'
   import PlayerOptions from '../options/player-options'
   import UIOptions from '../options/ui-options'
+  import {createPlayer} from '../../utils/player-loader'
 
   export default {
     computed: {
@@ -95,12 +96,9 @@
     methods: {
       setupPlayer() {
         this.setup = true;
-        const playerContainer = document.createElement('div');
-        playerContainer.id = this.$store.state.config.targetId;
-        document.body.appendChild(playerContainer);
-        player = KalturaPlayer.setup(this.$store.state.config);
+        createPlayer(this.$store.state.config);
         setTimeout(() => {
-          this.$store.commit('setPlayer', player);
+          this.$store.commit('setPlayer', __kalturaPlayer);
           this.setup = false
         }, 600);
       }

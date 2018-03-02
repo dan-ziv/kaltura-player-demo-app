@@ -3,11 +3,11 @@ import {loadScriptAsync} from './load-script-async'
 import JSONC from 'jsoncomp'
 
 const PlayerScripts = {
-  ott: 'kaltura-tv-player.js',
-  ovp: 'kaltura-ovp-player.js'
+  OTT: 'kaltura-tv-player.js',
+  OVP: 'kaltura-ovp-player.js'
 };
 
-const FALLBACK_SCRIPT = PlayerScripts.ovp;
+const FALLBACK_SCRIPT = PlayerScripts.OVP;
 
 function loadPlayer() {
   let playerScript;
@@ -15,7 +15,7 @@ function loadPlayer() {
   const generatedData = getUrlParameter('generate');
   if (generatedData) {
     decompressedData = JSONC.decompress(JSON.parse(generatedData));
-    playerScript = PlayerScripts[decompressedData.type];
+    playerScript = PlayerScripts[decompressedData.type.toUpperCase()];
   } else {
     playerScript = FALLBACK_SCRIPT;
   }
@@ -30,4 +30,11 @@ function loadPlayer() {
     });
 }
 
-export {loadPlayer};
+function createPlayer(config) {
+  const playerContainer = document.createElement('div');
+  playerContainer.id = config.targetId;
+  document.body.appendChild(playerContainer);
+  __kalturaPlayer = KalturaPlayer.setup(config);
+}
+
+export {loadPlayer, createPlayer};

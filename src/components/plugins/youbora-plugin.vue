@@ -22,7 +22,13 @@
     },
     computed: {
       config() {
-        return this.$store.state.config.player.plugins;
+        return this.$store.state.config.player.plugins.youbora;
+      }
+    },
+    created() {
+      if (this.config) {
+        this.active = true;
+        this.youbora = this.config;
       }
     },
     data() {

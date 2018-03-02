@@ -26,9 +26,15 @@
         }
       }
     },
+    created() {
+      if (this.config) {
+        this.active = true;
+        this.ima = this.config;
+      }
+    },
     computed: {
       config() {
-        return this.$store.state.config.player.plugins;
+        return this.$store.state.config.player.plugins.ima;
       }
     },
     data() {
