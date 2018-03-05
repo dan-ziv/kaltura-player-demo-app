@@ -5,7 +5,7 @@
         <div style="float: right">
           <el-dropdown @command="onPrioritySelected">
             <el-button type="primary">
-              {{selectedPriority.value}}<i class="el-icon-arrow-down el-icon--right"></i>
+              {{streamPriority[0].value}}<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="priority in streamPriority"
@@ -97,6 +97,7 @@
   import StreamPriority from '../../data/stream-priority'
   import Entries from '../../data/entries'
   import {mapGetters} from 'vuex'
+  import {storeUpdateMediaInfo} from '../../store/mutations-helpers'
 
   export default {
     computed: mapGetters([
@@ -147,18 +148,22 @@
             if (this.options.protocol) mediaInfo.protocol = this.options.protocol;
             if (this.options.formats) mediaInfo.formats = this.options.formats;
           }
-          this.player.loadMedia(mediaInfo)
-            .then(() => this.isLoadingMedia = false);
+          storeUpdateMediaInfo(mediaInfo);
+          this.player.loadMedia(mediaInfo).then(() => this.isLoadingMedia = false);
         }
       },
-      onPrioritySelected(priority) {
-        this.selectedPriority = priority;
+      onPrioritySelected(selectedPriority) {
+        const index = this.streamPriority.findIndex(sp => sp.value === selectedPriority.value);
+        if (index > -1) {
+          this.streamPriority.splice(index, 1);
+        }
+        this.streamPriority.unshift(priority);
       },
       configureSource() {
         this.player.configure({
           sources: {
-            [this.selectedPriority.value.toLowerCase()]: [{
-              mimetype: this.selectedPriority.mimetype,
+            [this.streamPriority[0].value.toLowerCase()]: [{
+              mimetype: this.streamPriority[0].mimetype,
               url: this.entry
             }]
           }
@@ -167,9 +172,7 @@
       configureStreamPriority() {
         this.player.configure({
           playback: {
-            streamPriority: [
-              this.selectedPriority.data
-            ]
+            streamPriority: this.streamPriority.map(sp => sp.data)
           }
         });
       }
@@ -189,7 +192,6 @@
           fileIds: '',
           formats: []
         },
-        selectedPriority: StreamPriority.Hls,
         streamPriority: [
           StreamPriority.Hls,
           StreamPriority.Dash,

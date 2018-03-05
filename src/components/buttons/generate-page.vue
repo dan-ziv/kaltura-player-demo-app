@@ -12,16 +12,29 @@
 <script>
   import JSONC from 'jsoncomp'
   import {copyToClipboard} from '../../utils/copy-to-clipboard'
+  import {mapGetters} from 'vuex'
 
   export default {
+    computed: mapGetters([
+      'player',
+      'config',
+      'mediaInfo'
+    ]),
     methods: {
-      generate() {
-        const config = this.$store.state.config;
-        config.player = this.$store.state.player.config;
+      getJSON() {
+        const config = this.config;
+        config.player = this.player.config;
         const json = {
           config: config,
           type: KalturaPlayer.PLAYER_TYPE
         };
+        if (this.mediaInfo) {
+          json.mediaInfo = this.mediaInfo;
+        }
+        return json;
+      },
+      generate() {
+        const json = this.getJSON();
         const compressedJSON = JSONC.compress(json);
         const encodedCompressedJSON = encodeURIComponent(JSON.stringify(compressedJSON));
         this.url = '?generate=' + encodedCompressedJSON;
