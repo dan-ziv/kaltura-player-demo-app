@@ -7,16 +7,18 @@
 </template>
 
 <script>
+  import {storeAddPlugin, storeRemovePlugin} from '../../store/mutations-helpers'
+
   export default {
     methods: {
       onSwitchChanged() {
         if (this.active) {
-          this.$store.commit('addPlugin', {
+          storeAddPlugin({
             name: 'youbora',
             config: this.youbora
           });
         } else {
-          this.$store.commit('removePlugin', 'youbora');
+          storeRemovePlugin('youbora');
         }
       }
     },

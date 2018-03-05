@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './app'
 import Element from 'element-ui'
-import store from './store'
+import store from './store/index'
 import {loadPlayer, createPlayer} from './utils/player-loader'
+import {storeUpdateConfig, storeSetPlayer} from './store/mutations-helpers'
 
 Vue.use(Element);
 Vue.config.productionTip = false;
@@ -21,9 +22,9 @@ loadPlayer().then((data) => {
     store,
     beforeCreate() {
       if (data) {
-        this.$store.commit('updateConfig', data.config);
+        storeUpdateConfig(data.config);
         createPlayer(this.$store.state.config);
-        this.$store.commit('setPlayer', __kalturaPlayer);
+        storeSetPlayer(__kalturaPlayer);
       }
     },
     components: {App},

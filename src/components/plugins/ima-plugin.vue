@@ -10,19 +10,21 @@
 </template>
 
 <script>
+  import {storeUpdateAdTagUrl, storeRemovePlugin, storeAddPlugin} from '../../store/mutations-helpers'
+
   export default {
     methods: {
       onAdTagChanged() {
-        this.$store.commit('updateAdTagUrl', this.ima.adTagUrl);
+        storeUpdateAdTagUrl(this.ima.adTagUrl);
       },
       onSwitchChanged() {
         if (this.active) {
-          this.$store.commit('addPlugin', {
+          storeAddPlugin({
             name: 'ima',
             config: this.ima
           });
         } else {
-          this.$store.commit('removePlugin', 'ima');
+          storeRemovePlugin('ima');
         }
       }
     },

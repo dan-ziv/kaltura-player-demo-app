@@ -80,6 +80,7 @@
   import PlayerOptions from '../options/player-options'
   import UIOptions from '../options/ui-options'
   import {createPlayer} from '../../utils/player-loader'
+  import {storeSetPlayer} from '../../store/mutations-helpers'
 
   export default {
     computed: {
@@ -98,7 +99,7 @@
         this.setup = true;
         createPlayer(this.$store.state.config);
         setTimeout(() => {
-          this.$store.commit('setPlayer', __kalturaPlayer);
+          storeSetPlayer(__kalturaPlayer);
           this.setup = false
         }, 600);
       }

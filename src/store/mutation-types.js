@@ -1,0 +1,6 @@
+export const SET_PLAYER = 'SET_PLAYER';
+export const ADD_PLUGIN = 'ADD_PLUGIN';
+export const REMOVE_PLUGIN = 'REMOVE_PLUGIN';
+export const UPDATE_CONFIG = 'UPDATE_CONFIG';
+export const UPDATE_MEDIA_INFO = 'UPDATE_MEDIA_INFO';
+export const UPDATE_AD_TAG_URL = 'UPDATE_AD_TAG_URL';
