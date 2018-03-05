@@ -157,7 +157,7 @@
         if (index > -1) {
           this.streamPriority.splice(index, 1);
         }
-        this.streamPriority.unshift(priority);
+        this.streamPriority.unshift(selectedPriority);
       },
       configureSource() {
         this.player.configure({
