@@ -81,13 +81,12 @@
   import UIOptions from '../options/ui-options'
   import {createPlayer} from '../../utils/player-loader'
   import {storeSetPlayer} from '../../store/mutations-helpers'
+  import {mapGetters} from 'vuex'
 
   export default {
-    computed: {
-      config() {
-        return this.$store.state.config;
-      }
-    },
+    computed: mapGetters([
+      'config'
+    ]),
     components: {
       ProviderOptions,
       GenericOptions,

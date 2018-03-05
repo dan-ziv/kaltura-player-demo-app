@@ -37,23 +37,23 @@
   export default {
     props: ['size'],
     updated() {
-      if (this.$store.state.player) {
-        this.$store.state.player.configure({
+      if (this.$store.getters.player) {
+        this.$store.getters.player.configure({
           playback: this.config
         });
       }
     },
     created() {
-      if (this.$store.state.player) {
-        this.cachedConfig = this.$store.state.player.config.playback;
+      if (this.$store.getters.player) {
+        this.cachedConfig = this.$store.getters.player.config.playback;
       }
     },
     computed: {
       config() {
-        if (this.$store.state.player) {
+        if (this.$store.getters.player) {
           return this.cachedConfig;
         } else {
-          return this.$store.state.config.player.playback;
+          return this.$store.getters.playerConfig.playback;
         }
       },
       preload: {

@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     created() {
       this.player.addEventListener(this.player.Event.SOURCE_SELECTED, () => {
@@ -22,9 +24,9 @@
       })
     },
     computed: {
-      player() {
-        return this.$store.state.player;
-      },
+      ...mapGetters([
+        'player'
+      ]),
       adapterType() {
         switch (this.rawAdapterType) {
           case 'NativeAdapter':

@@ -96,13 +96,12 @@
 <script>
   import StreamPriority from '../../data/stream-priority'
   import Entries from '../../data/entries'
+  import {mapGetters} from 'vuex'
 
   export default {
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     mounted() {
       this.entries = Entries;
       if (this.isOTT()) {

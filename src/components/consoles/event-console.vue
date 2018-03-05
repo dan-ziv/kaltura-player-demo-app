@@ -46,11 +46,13 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     computed: {
-      player() {
-        return this.$store.state.player;
-      },
+      ...mapGetters([
+        'player'
+      ]),
       filteredEvents() {
         return this.events.filter(event => {
           return event.type.indexOf(this.filter.toLowerCase()) > -1;

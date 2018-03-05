@@ -11,6 +11,7 @@
 
 <script>
   import {copyToClipboard} from '../../utils/copy-to-clipboard'
+  import {mapGetters} from 'vuex'
 
   export default {
     mounted() {
@@ -23,11 +24,9 @@
         copyToClipboard(this.sourceHiddenDivId);
       }
     },
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     data() {
       return {
         src: '',

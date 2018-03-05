@@ -3,7 +3,7 @@
     <el-form-item label="Partner ID">
       <el-input v-model="config.partnerId"/>
     </el-form-item>
-      <el-form-item label="UI Conf ID">
+    <el-form-item label="UI Conf ID">
       <el-input v-model="config.uiConfId"/>
     </el-form-item>
     <el-form-item label="KS">
@@ -19,12 +19,12 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
-    computed: {
-      config() {
-        return this.$store.state.config.provider;
-      }
-    }
+    computed: mapGetters({
+      config: 'providerConfig'
+    })
   }
 </script>
 

@@ -16,6 +16,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     created() {
       this.player.addEventListener(this.player.Event.TRACKS_CHANGED, (e) => {
@@ -41,11 +43,9 @@
         this.currentBitrate = e.payload.selectedVideoTrack.bandwidth;
       });
     },
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     data() {
       return {
         audioLanguage: 'N/A',

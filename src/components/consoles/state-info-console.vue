@@ -10,12 +10,12 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     created() {
       this.player.addEventListener(this.player.Event.PLAYER_STATE_CHANGED, (e) => {
         this.currentState = e.payload.newState.type;

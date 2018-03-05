@@ -9,12 +9,12 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     created() {
       this.player.addEventListener(this.player.Event.SOURCE_SELECTED, () => {
         this.stateHistory = [];

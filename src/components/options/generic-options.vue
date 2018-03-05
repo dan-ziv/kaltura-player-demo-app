@@ -20,6 +20,8 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
     mounted() {
       const LogLevelType = KalturaPlayer.core.LogLevelType;
@@ -30,11 +32,9 @@
         logLevels: []
       };
     },
-    computed: {
-      config() {
-        return this.$store.state.config;
-      }
-    }
+    computed: mapGetters([
+      'config'
+    ])
   }
 </script>
 
