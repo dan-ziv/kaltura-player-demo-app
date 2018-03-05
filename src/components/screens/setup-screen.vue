@@ -96,7 +96,7 @@
     methods: {
       setupPlayer() {
         this.setup = true;
-        createPlayer(this.$store.state.config);
+        createPlayer(this.config);
         setTimeout(() => {
           storeSetPlayer(__kalturaPlayer);
           this.setup = false

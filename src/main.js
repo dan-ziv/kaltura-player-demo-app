@@ -23,7 +23,7 @@ loadPlayer().then((data) => {
     beforeCreate() {
       if (data) {
         storeUpdateConfig(data.config);
-        createPlayer(this.$store.state.config);
+        createPlayer(this.$store.getters.config);
         storeSetPlayer(__kalturaPlayer);
       }
     },

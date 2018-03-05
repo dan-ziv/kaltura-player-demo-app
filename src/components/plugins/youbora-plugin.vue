@@ -8,6 +8,7 @@
 
 <script>
   import {storeAddPlugin, storeRemovePlugin} from '../../store/mutations-helpers'
+  import {mapGetters} from 'vuex'
 
   export default {
     methods: {
@@ -22,11 +23,9 @@
         }
       }
     },
-    computed: {
-      config() {
-        return this.$store.state.config.player.plugins.youbora;
-      }
-    },
+    computed: mapGetters({
+      config: 'youboraConfig'
+    }),
     created() {
       if (this.config) {
         this.active = true;

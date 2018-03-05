@@ -7,12 +7,12 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+
   export default {
-    computed: {
-      config() {
-        return this.$store.state.config;
-      },
-    },
+    computed: mapGetters([
+      'config'
+    ]),
     mounted() {
       const playerPlaceholder = document.getElementById('player-placeholder');
       const playerContainer = document.getElementById(this.config.targetId);

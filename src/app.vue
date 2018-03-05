@@ -14,14 +14,13 @@
   import SetupScreen from './components/screens/setup-screen'
   import DemoScreen from './components/screens/demo-screen'
   import HeaderInfoContainer from './components/header-info-container'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'App',
-    computed: {
-      player() {
-        return this.$store.state.player;
-      }
-    },
+    computed: mapGetters([
+      'player'
+    ]),
     components: {
       HeaderInfoContainer,
       SetupScreen,

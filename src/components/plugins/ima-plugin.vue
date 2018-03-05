@@ -11,6 +11,7 @@
 
 <script>
   import {storeUpdateAdTagUrl, storeRemovePlugin, storeAddPlugin} from '../../store/mutations-helpers'
+  import {mapGetters} from 'vuex'
 
   export default {
     methods: {
@@ -34,11 +35,9 @@
         this.ima = this.config;
       }
     },
-    computed: {
-      config() {
-        return this.$store.state.config.player.plugins.ima;
-      }
-    },
+    computed: mapGetters({
+      config: 'imaConfig'
+    }),
     data() {
       return {
         active: false,
