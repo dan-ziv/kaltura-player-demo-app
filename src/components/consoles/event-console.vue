@@ -26,19 +26,18 @@
           sortable
           prop="index"
           label="#"
-          width="100">
+          width="200">
         </el-table-column>
         <el-table-column
           sortable
           prop="time"
           label="Time"
-          width="150">
+          width="250">
         </el-table-column>
         <el-table-column
           sortable
           prop="type"
-          label="Type"
-          width="500">
+          label="Type">
         </el-table-column>
       </el-table>
     </el-row>
@@ -91,7 +90,6 @@
 
 <style scoped>
   .event-table {
-    width: 800px;
     overflow-x: hidden;
   }
 </style>
