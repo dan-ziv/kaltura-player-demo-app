@@ -7,6 +7,7 @@ const PlayerScripts = {
   OVP: 'kaltura-ovp-player.js'
 };
 
+const QA_OVP_PLAYER_SCRIPT = '//qa-apache-php7.dev.kaltura.com/p/1091/sp/109100/embedPlaykitJs/uiconf_id/15211585/partner_id/1091';
 const FALLBACK_SCRIPT = PlayerScripts.OVP;
 
 function loadPlayer() {
@@ -15,11 +16,16 @@ function loadPlayer() {
   const generatedData = getUrlParameter('generate');
   if (generatedData) {
     decompressedData = JSONC.decompress(JSON.parse(generatedData));
-    playerScript = PlayerScripts[decompressedData.type.toUpperCase()];
+    playerScript = `./${PlayerScripts[decompressedData.type.toUpperCase()]}`;
   } else {
-    playerScript = FALLBACK_SCRIPT;
+    const version = getUrlParameter('v');
+    if (version) {
+      playerScript = `${QA_OVP_PLAYER_SCRIPT}'/versions/kaltura-ovp-player=${version}`;
+    } else {
+      playerScript = `./${FALLBACK_SCRIPT}`;
+    }
   }
-  return loadScriptAsync('./' + playerScript)
+  return loadScriptAsync(playerScript)
     .then(() => {
       if (decompressedData) {
         return decompressedData;
