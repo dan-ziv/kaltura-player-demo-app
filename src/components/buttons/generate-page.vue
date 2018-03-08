@@ -23,7 +23,7 @@
     methods: {
       getJSON() {
         const config = this.config;
-        config.player = this.player.config;
+        config.player.playback = this.player.config.playback;
         const json = {
           config: config,
           type: KalturaPlayer.PLAYER_TYPE

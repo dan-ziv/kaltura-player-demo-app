@@ -101,7 +101,8 @@
 
   export default {
     computed: mapGetters([
-      'player'
+      'player',
+      'mediaInfo'
     ]),
     mounted() {
       this.entries = Entries;
@@ -112,6 +113,9 @@
         this.mediaTypes = Object.entries(MediaType);
         this.options.contextType = ContextType.PLAYBACK;
         this.options.mediaType = MediaType.MEDIA;
+      }
+      if (this.mediaInfo) {
+        this.player.loadMedia(this.mediaInfo);
       }
     },
     methods: {
