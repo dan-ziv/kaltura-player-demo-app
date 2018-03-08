@@ -18,7 +18,7 @@ function loadPlayer() {
     decompressedData = JSONC.decompress(JSON.parse(generatedData));
     playerScript = `./${PlayerScripts[decompressedData.type.toUpperCase()]}`;
   } else {
-    const version = getUrlParameter('v');
+    const version = getUrlParameter('version');
     if (version) {
       playerScript = `${QA_OVP_PLAYER_SCRIPT}'/versions/kaltura-ovp-player=${version}`;
     } else {
