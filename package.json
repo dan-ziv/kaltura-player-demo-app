@@ -5,16 +5,17 @@
   "author": "Dan Ziv <dan.ziv@kaltura.com>",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "element-ui": "^2.2.0",
+    "express": "^4.16.3",
     "jsoncomp": "^1.6.1",
+    "kaltura-player-js": "https://github.com/kaltura/kaltura-player-js.git#master",
     "vue": "^2.5.2",
-    "vuex": "^3.0.1",
-    "kaltura-player-js": "https://github.com/kaltura/kaltura-player-js.git#master"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
