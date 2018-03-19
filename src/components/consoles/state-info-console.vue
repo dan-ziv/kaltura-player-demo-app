@@ -13,9 +13,11 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    computed: mapGetters([
-      'player'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player'
+      ])
+    },
     created() {
       this.player.addEventListener(this.player.Event.PLAYER_STATE_CHANGED, (e) => {
         this.currentState = e.payload.newState.type;

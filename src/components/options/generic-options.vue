@@ -20,7 +20,8 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapState} from 'vuex'
+  import * as KalturaPlayer from 'kaltura-player-js/dist/kaltura-ovp-player'
 
   export default {
     mounted() {
@@ -32,12 +33,10 @@
         logLevels: []
       };
     },
-    computed: mapGetters([
-      'config'
-    ])
+    computed: {
+      ...mapState({
+        config: 'genericConfig'
+      })
+    }
   }
 </script>
-
-<style scoped>
-
-</style>

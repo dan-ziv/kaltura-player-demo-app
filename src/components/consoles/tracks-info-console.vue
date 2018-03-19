@@ -43,9 +43,11 @@
         this.currentBitrate = e.payload.selectedVideoTrack.bandwidth;
       });
     },
-    computed: mapGetters([
-      'player'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player'
+      ])
+    },
     data() {
       return {
         audioLanguage: 'N/A',
@@ -56,7 +58,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

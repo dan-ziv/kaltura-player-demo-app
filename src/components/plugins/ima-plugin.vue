@@ -35,9 +35,11 @@
         this.ima = this.config;
       }
     },
-    computed: mapGetters({
-      config: 'imaConfig'
-    }),
+    computed: {
+      ...mapGetters({
+        config: 'imaConfig'
+      })
+    },
     data() {
       return {
         active: false,
@@ -48,7 +50,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

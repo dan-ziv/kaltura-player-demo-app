@@ -16,19 +16,9 @@ WebFont.load({
   }
 });
 
-loadPlayer().then((data) => {
-  new Vue({
-    el: '#app',
-    store,
-    beforeCreate() {
-      if (data) {
-        storeUpdateConfig(data.config);
-        storeUpdateMediaInfo(data.mediaInfo);
-        createPlayer(this.$store.getters.config);
-        storeSetPlayer(__kalturaPlayer);
-      }
-    },
-    components: {App},
-    template: '<App/>'
-  });
+new Vue({
+  el: '#app',
+  store,
+  components: {App},
+  template: '<App/>'
 });

@@ -69,7 +69,7 @@
           <div slot="header" class="clearfix">
             <span>Playback Values</span>
           </div>
-          <PlaybackOptions size="mini"/>
+          <PlaybackOptions size="mini" :playerLoaded="true"/>
         </el-card>
       </el-row>
       <el-row class="padding-sm">
@@ -113,7 +113,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

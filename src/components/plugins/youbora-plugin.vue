@@ -23,9 +23,11 @@
         }
       }
     },
-    computed: mapGetters({
-      config: 'youboraConfig'
-    }),
+    computed: {
+      ...mapGetters({
+        config: 'youboraConfig'
+      })
+    },
     created() {
       if (this.config) {
         this.active = true;

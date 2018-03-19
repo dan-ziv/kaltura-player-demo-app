@@ -7,14 +7,13 @@
 </template>
 
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapState} from 'vuex'
 
   export default {
-    computed: mapGetters({
-      config: 'uiConfig'
-    })
+    computed: {
+      ...mapState({
+        config: 'uiConfig'
+      })
+    }
   }
 </script>
-
-<style scoped>
-</style>

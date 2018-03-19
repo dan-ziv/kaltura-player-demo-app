@@ -5,14 +5,14 @@
         <div style="float: right">
           <el-dropdown @command="onPrioritySelected">
             <el-button type="primary">
-              {{streamPriority[0].value}}<i class="el-icon-arrow-down el-icon--right"></i>
+              {{streamPriority[0].data.format.toUpperCase()}}<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item v-for="priority in streamPriority"
-                                :key="priority.value"
-                                :value="priority.data"
+                                :key="priority.data.format"
+                                :value="priority.data.format"
                                 :command="priority">
-                {{priority.value}}
+                {{priority.data.format.toUpperCase()}}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -94,18 +94,22 @@
 </template>
 
 <script>
-  import StreamPriority from '../../data/stream-priority'
   import Entries from '../../data/entries'
   import {mapGetters} from 'vuex'
   import {storeUpdateMediaInfo} from '../../store/mutations-helpers'
 
   export default {
-    computed: mapGetters([
-      'player',
-      'mediaInfo'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player',
+        'mediaInfo',
+        'partnerId'
+      ])
+    },
     mounted() {
-      this.entries = Entries;
+      if (this.partnerId === 1091) {
+        this.entries = Entries;
+      }
       if (this.isOTT()) {
         const ContextType = KalturaPlayer.providers.ContextType;
         const MediaType = KalturaPlayer.providers.MediaType;
@@ -115,12 +119,18 @@
         this.options.mediaType = MediaType.MEDIA;
       }
       if (this.mediaInfo) {
-        this.player.loadMedia(this.mediaInfo);
+        this.isLoadingMedia = true;
+        this.player.loadMedia(this.mediaInfo).then(() => {
+          const priority = this.streamPriority.find(p => p.data.format === this.player.streamType);
+          this.onPrioritySelected(priority);
+          this.entry = this.mediaInfo.entryId;
+          this.isLoadingMedia = false;
+        });
       }
     },
     methods: {
       isOTT() {
-        return KalturaPlayer.PLAYER_TYPE === "ott";
+        return KalturaPlayer.PLAYER_TYPE === 'ott';
       },
       querySearch(queryString, cb) {
         const entries = this.entries;
@@ -157,7 +167,7 @@
         }
       },
       onPrioritySelected(selectedPriority) {
-        const index = this.streamPriority.findIndex(sp => sp.value === selectedPriority.value);
+        const index = this.streamPriority.findIndex(sp => sp.data.format === selectedPriority.data.format);
         if (index > -1) {
           this.streamPriority.splice(index, 1);
         }
@@ -166,7 +176,7 @@
       configureSource() {
         this.player.configure({
           sources: {
-            [this.streamPriority[0].value.toLowerCase()]: [{
+            [this.streamPriority[0].data.format]: [{
               mimetype: this.streamPriority[0].mimetype,
               url: this.entry
             }]
@@ -187,7 +197,7 @@
         contextTypes: [],
         mediaTypes: [],
         isLoadingMedia: false,
-        entry: Entries[0].value,
+        entry: null,
         options: {
           ks: '',
           protocol: '',
@@ -196,11 +206,25 @@
           fileIds: '',
           formats: []
         },
-        streamPriority: [
-          StreamPriority.Hls,
-          StreamPriority.Dash,
-          StreamPriority.Progressive
-        ]
+        streamPriority: [{
+          mimetype: 'application/x-mpegURL',
+          data: {
+            engine: 'html5',
+            format: 'hls'
+          }
+        }, {
+          mimetype: 'application/dash+xml',
+          data: {
+            engine: 'html5',
+            format: 'dash'
+          }
+        }, {
+          mimetype: 'video/mp4',
+          data: {
+            engine: 'html5',
+            format: 'progressive'
+          }
+        }]
       }
     }
   }

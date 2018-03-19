@@ -6,7 +6,7 @@
     </el-form-item>
     <el-form-item label="Playback">
       <br>
-      <PlaybackOptions/>
+      <PlaybackOptions :playerLoaded="playerLoaded"/>
     </el-form-item>
   </el-form>
 </template>
@@ -16,12 +16,10 @@
   import PluginsConfig from './plugins-config'
 
   export default {
+    props: ['playerLoaded'],
     components: {
       PlaybackOptions,
       PluginsConfig
     }
   }
 </script>
-
-<style scoped>
-</style>

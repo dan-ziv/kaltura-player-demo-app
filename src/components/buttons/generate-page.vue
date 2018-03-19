@@ -15,19 +15,26 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    computed: mapGetters([
-      'player',
-      'config',
-      'mediaInfo'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player',
+        'runtimeConfig',
+        'mediaInfo',
+        'embedServiceUrl'
+      ])
+    },
     methods: {
       getJSON() {
-        const config = this.config;
+        const config = this.runtimeConfig;
         config.player.playback = this.player.config.playback;
         const json = {
-          config: config,
-          type: KalturaPlayer.PLAYER_TYPE
+          config: config
         };
+        if (this.embedServiceUrl) {
+          json.embedServiceUrl = this.embedServiceUrl;
+        } else {
+          json.playerType = KalturaPlayer.PLAYER_TYPE;
+        }
         if (this.mediaInfo) {
           json.mediaInfo = this.mediaInfo;
         }

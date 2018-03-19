@@ -24,9 +24,11 @@
         copyToClipboard(this.sourceHiddenDivId);
       }
     },
-    computed: mapGetters([
-      'player'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player'
+      ])
+    },
     data() {
       return {
         src: '',

@@ -10,12 +10,14 @@
   import {mapGetters} from 'vuex'
 
   export default {
-    computed: mapGetters([
-      'config'
-    ]),
+    computed: {
+      ...mapGetters([
+        'targetId'
+      ])
+    },
     mounted() {
       const playerPlaceholder = document.getElementById('player-placeholder');
-      const playerContainer = document.getElementById(this.config.targetId);
+      const playerContainer = document.getElementById(this.targetId);
       addStyles(playerContainer);
       playerPlaceholder.appendChild(playerContainer);
     }
@@ -29,6 +31,3 @@
     playerContainer.style.boxShadow = "2px 2px 8px 0px #88888885";
   }
 </script>
-
-<style>
-</style>

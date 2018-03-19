@@ -18,9 +18,11 @@
 
   export default {
     name: 'App',
-    computed: mapGetters([
-      'player'
-    ]),
+    computed: {
+      ...mapGetters([
+        'player'
+      ])
+    },
     components: {
       HeaderInfoContainer,
       SetupScreen,

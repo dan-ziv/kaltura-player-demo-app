@@ -16,6 +16,8 @@
 </template>
 
 <script>
+  import * as KalturaPlayer from 'kaltura-player-js/dist/kaltura-ovp-player'
+
   export default {
     data() {
       return {

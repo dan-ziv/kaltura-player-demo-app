@@ -1,9 +1,14 @@
+export const playbackConfig = state => state.playerConfig.playback;
+export const youboraConfig = state => state.playerConfig.plugins.youbora;
+export const imaConfig = state => state.playerConfig.plugins.ima;
 export const player = state => state.player;
-export const config = state => state.config;
-export const playerConfig = state => state.config.player;
-export const uiConfig = state => state.config.ui;
-export const providerConfig = state => state.config.provider;
+export const playerType = state => state.playerType;
+export const embedServiceUrl = state => state.embedServiceUrl;
+export const playerConfig = state => state.playerConfig;
+export const uiConfig = state => state.uiConfig;
+export const providerConfig = state => state.providerConfig;
+export const genericConfig = state => state.genericConfig;
+export const runtimeConfig = state => state.runtimeConfig;
 export const mediaInfo = state => state.mediaInfo;
-export const youboraConfig = state => state.config.player.plugins.youbora;
-export const imaConfig = state => state.config.player.plugins.ima;
-
+export const targetId = state => state.runtimeConfig.targetId;
+export const partnerId = state => state.runtimeConfig.provider.partnerId;

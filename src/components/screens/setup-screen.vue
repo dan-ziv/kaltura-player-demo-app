@@ -50,7 +50,7 @@
           </template>
           <div class="padding-sm">
             <el-card class="box-card">
-              <PlayerOptions/>
+              <PlayerOptions :playerLoaded="false"/>
             </el-card>
           </div>
         </el-collapse-item>
@@ -79,13 +79,21 @@
   import GenericOptions from '../options/generic-options'
   import PlayerOptions from '../options/player-options'
   import UIOptions from '../options/ui-options'
-  import {createPlayer} from '../../utils/player-loader'
-  import {storeSetPlayer} from '../../store/mutations-helpers'
+  import {createPlayer, loadPlayer} from '../../utils/player-loader'
+  import {storeSetPlayer, storeUpdateConfig, storeUpdateMediaInfo} from '../../store/mutations-helpers'
+  import {getUrlParameter} from '../../utils/url-parameter'
   import {mapGetters} from 'vuex'
+  import JSONC from 'jsoncomp'
 
   export default {
     computed: mapGetters([
-      'config'
+      'runtimeConfig',
+      'genericConfig',
+      'uiConfig',
+      'providerConfig',
+      'playerConfig',
+      'embedServiceUrl',
+      'playerType'
     ]),
     components: {
       ProviderOptions,
@@ -93,14 +101,36 @@
       PlayerOptions,
       UIOptions
     },
+    beforeCreate() {
+      const generatedData = getUrlParameter('generate');
+      if (generatedData) {
+        this.setup = true;
+        const decompressedData = JSONC.decompress(JSON.parse(generatedData));
+        storeUpdateConfig(decompressedData.config);
+        storeUpdateMediaInfo(decompressedData.mediaInfo);
+        loadPlayer(decompressedData.embedServiceUrl, decompressedData.playerType)
+          .then(() => {
+            createPlayer(this.runtimeConfig);
+            storeSetPlayer(__kalturaPlayer);
+            this.setup = false
+          });
+      }
+    },
     methods: {
       setupPlayer() {
         this.setup = true;
-        createPlayer(this.config);
-        setTimeout(() => {
-          storeSetPlayer(__kalturaPlayer);
-          this.setup = false
-        }, 600);
+        const runtimeConfig = {
+          provider: this.providerConfig,
+          player: this.playerConfig,
+          ui: this.uiConfig
+        };
+        storeUpdateConfig(Object.assign(runtimeConfig, this.genericConfig));
+        loadPlayer(this.embedServiceUrl, this.playerType)
+          .then(() => {
+            createPlayer(this.runtimeConfig);
+            storeSetPlayer(__kalturaPlayer);
+            this.setup = false
+          });
       }
     },
     data() {
@@ -110,7 +140,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>
