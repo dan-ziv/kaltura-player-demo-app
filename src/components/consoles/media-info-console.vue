@@ -97,6 +97,7 @@
   import Entries from '../../data/entries'
   import {mapGetters} from 'vuex'
   import {storeUpdateMediaInfo} from '../../store/mutations-helpers'
+  import {StorageManager} from '../../utils/storage-manager'
 
   export default {
     computed: {
@@ -163,6 +164,7 @@
             if (this.options.formats) mediaInfo.formats = this.options.formats;
           }
           storeUpdateMediaInfo(mediaInfo);
+          StorageManager.setAppMediaInfo(mediaInfo);
           this.player.loadMedia(mediaInfo).then(() => this.isLoadingMedia = false);
         }
       },

@@ -84,6 +84,7 @@
   import {getUrlParameter} from '../../utils/url-parameter'
   import {mapGetters} from 'vuex'
   import JSONC from 'jsoncomp'
+  import {StorageManager} from '../../utils/storage-manager'
 
   export default {
     computed: mapGetters([
@@ -101,19 +102,21 @@
       PlayerOptions,
       UIOptions
     },
-    beforeCreate() {
+    created() {
       const generatedData = getUrlParameter('generate');
+      this.setup = true;
       if (generatedData) {
-        this.setup = true;
         const decompressedData = JSONC.decompress(JSON.parse(generatedData));
         storeUpdateConfig(decompressedData.config);
         storeUpdateMediaInfo(decompressedData.mediaInfo);
-        loadPlayer(decompressedData.embedServiceUrl, decompressedData.playerType)
-          .then(() => {
-            createPlayer(this.runtimeConfig);
-            storeSetPlayer(__kalturaPlayer);
-            this.setup = false
-          });
+        this.loadAndCreatePlayer(decompressedData.embedServiceUrl, decompressedData.playerType);
+      } else if (StorageManager.hasAppStorage()) {
+        const storage = StorageManager.getAppStorage();
+        storeUpdateMediaInfo(StorageManager.getAppMediaInfo());
+        storeUpdateConfig(storage.config);
+        this.loadAndCreatePlayer(storage.embedServiceUrl, storage.playerType);
+      } else {
+        this.setup = false;
       }
     },
     methods: {
@@ -125,7 +128,11 @@
           ui: this.uiConfig
         };
         storeUpdateConfig(Object.assign(runtimeConfig, this.genericConfig));
-        loadPlayer(this.embedServiceUrl, this.playerType)
+        StorageManager.setAppStorage(this.runtimeConfig, this.embedServiceUrl, this.playerType);
+        this.loadAndCreatePlayer(this.embedServiceUrl, this.playerType)
+      },
+      loadAndCreatePlayer(embedServiceUrl, playerType) {
+        loadPlayer(embedServiceUrl, playerType)
           .then(() => {
             createPlayer(this.runtimeConfig);
             storeSetPlayer(__kalturaPlayer);

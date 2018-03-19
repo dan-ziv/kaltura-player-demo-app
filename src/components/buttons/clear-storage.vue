@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-tooltip class="item" effect="dark" content="Clear the browser's local storage" placement="top-start">
-      <el-button class="btn" type="primary" plain :loading="loading" @click="clearStorage">Clear Storage <i
+      <el-button type="primary" plain :loading="loading" @click="clearStorage">{{label}} <i
         class="el-icon-delete"></i>
       </el-button>
     </el-tooltip>
@@ -10,12 +10,11 @@
 
 <script>
   export default {
+    props: ['label', 'handler'],
     methods: {
       clearStorage() {
         this.loading = true;
-        if (localStorage) {
-          localStorage.clear();
-        }
+        this.handler();
         setTimeout(() => this.loading = false, 500);
       }
     },
@@ -26,10 +25,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .btn {
-    width: 230px;
-    max-width: 230px;
-  }
-</style>

@@ -37,7 +37,14 @@
             <CopySourceButton/>
           </div>
           <div class="padding-sm">
-            <ClearStorageButton/>
+            <ClearStorageButton
+              label="Clear Player Storage"
+              :handler="StorageManager.clearPlayerStorage"/>
+          </div>
+          <div class="padding-sm">
+            <ClearStorageButton
+              label="Clear App Storage"
+              :handler="StorageManager.clearAppStorage"/>
           </div>
         </el-card>
       </el-row>
@@ -96,8 +103,14 @@
   import ClearStorageButton from '../buttons/clear-storage'
   import CopySourceButton from '../buttons/copy-source'
   import GeneratePageButton from '../buttons/generate-page'
+  import {StorageManager} from '../../utils/storage-manager'
 
   export default {
+    computed: {
+      StorageManager() {
+        return StorageManager;
+      }
+    },
     components: {
       MediaInfoConsole,
       EngineInfoConsole,
