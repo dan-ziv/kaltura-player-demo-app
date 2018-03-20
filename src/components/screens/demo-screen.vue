@@ -49,7 +49,7 @@
         </el-card>
       </el-row>
     </el-col>
-    <el-col :span="15">
+    <el-col :span="16">
       <el-row class="padding-sm">
         <el-row class="padding-sm">
           <el-card class="box-card">
@@ -70,7 +70,7 @@
         </el-row>
       </el-row>
     </el-col>
-    <el-col :span="5">
+    <el-col :span="4">
       <el-row class="padding-sm">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
