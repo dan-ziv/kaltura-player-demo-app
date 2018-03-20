@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './app'
+import App from './App'
 import Element from 'element-ui'
 import store from './store/index'
 import {loadPlayer, createPlayer} from './utils/player-loader'

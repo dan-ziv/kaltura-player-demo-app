@@ -12,8 +12,8 @@
 </template>
 
 <script>
-  import PlaybackOptions from './playback-options'
-  import PluginsConfig from './plugins-config'
+  import PlaybackOptions from './Playback'
+  import PluginsConfig from './Plugins'
 
   export default {
     props: ['playerLoaded'],

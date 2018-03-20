@@ -49,7 +49,7 @@
         </el-card>
       </el-row>
     </el-col>
-    <el-col :span="16">
+    <el-col :span="15">
       <el-row class="padding-sm">
         <el-row class="padding-sm">
           <el-card class="box-card">
@@ -70,7 +70,7 @@
         </el-row>
       </el-row>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="5">
       <el-row class="padding-sm">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -92,17 +92,17 @@
 </template>
 
 <script>
-  import MediaInfoConsole from '../consoles/media-info-console'
-  import EngineInfoConsole from '../consoles/engine-info-console'
-  import StateInfoConsole from '../consoles/state-info-console'
-  import StateHistoryConsole from '../consoles/state-history-console'
-  import EventConsole from '../consoles/event-console'
-  import TracksInfoConsole from '../consoles/tracks-info-console'
-  import PlayerPlaceholder from '../player-placeholder'
-  import PlaybackOptions from '../options/playback-options'
-  import ClearStorageButton from '../buttons/clear-storage'
-  import CopySourceButton from '../buttons/copy-source'
-  import GeneratePageButton from '../buttons/generate-page'
+  import MediaInfoConsole from '../consoles/MediaInfo'
+  import EngineInfoConsole from '../consoles/EngineInfo'
+  import StateInfoConsole from '../consoles/StateInfo'
+  import StateHistoryConsole from '../consoles/StateHistory'
+  import EventConsole from '../consoles/Event'
+  import TracksInfoConsole from '../consoles/TracksInfo'
+  import PlayerPlaceholder from '../PlayerPlaceholder'
+  import PlaybackOptions from '../options/Playback'
+  import ClearStorageButton from '../buttons/ClearStorage'
+  import CopySourceButton from '../buttons/CopySource'
+  import GeneratePageButton from '../buttons/GeneratePage'
   import {StorageManager} from '../../utils/storage-manager'
 
   export default {

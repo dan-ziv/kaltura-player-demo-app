@@ -11,9 +11,9 @@
 </template>
 
 <script>
-  import SetupScreen from './components/screens/setup-screen'
-  import DemoScreen from './components/screens/demo-screen'
-  import HeaderInfoContainer from './components/header-info-container'
+  import SetupScreen from './components/screens/Setup'
+  import DemoScreen from './components/screens/Demo'
+  import HeaderInfoContainer from './components/HeaderContainer'
   import {mapGetters} from 'vuex'
 
   export default {

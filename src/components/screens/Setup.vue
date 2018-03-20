@@ -75,10 +75,10 @@
 </template>
 
 <script>
-  import ProviderOptions from '../options/provider-options'
-  import GenericOptions from '../options/generic-options'
-  import PlayerOptions from '../options/player-options'
-  import UIOptions from '../options/ui-options'
+  import ProviderOptions from '../options/Provider'
+  import GenericOptions from '../options/Generic'
+  import PlayerOptions from '../options/Player'
+  import UIOptions from '../options/UI'
   import {createPlayer, loadPlayer} from '../../utils/player-loader'
   import {storeSetPlayer, storeUpdateConfig, storeUpdateMediaInfo} from '../../store/mutations-helpers'
   import {getUrlParameter} from '../../utils/url-parameter'
