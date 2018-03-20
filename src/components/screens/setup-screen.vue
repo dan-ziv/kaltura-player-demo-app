@@ -87,15 +87,17 @@
   import {StorageManager} from '../../utils/storage-manager'
 
   export default {
-    computed: mapGetters([
-      'runtimeConfig',
-      'genericConfig',
-      'uiConfig',
-      'providerConfig',
-      'playerConfig',
-      'embedServiceUrl',
-      'playerType'
-    ]),
+    computed: {
+      ...mapGetters([
+        'runtimeConfig',
+        'genericConfig',
+        'uiConfig',
+        'providerConfig',
+        'playerConfig',
+        'embedServiceUrl',
+        'playerType'
+      ])
+    },
     components: {
       ProviderOptions,
       GenericOptions,
@@ -112,7 +114,6 @@
         this.loadAndCreatePlayer(decompressedData.embedServiceUrl, decompressedData.playerType);
       } else if (StorageManager.hasAppStorage()) {
         const storage = StorageManager.getAppStorage();
-        storeUpdateMediaInfo(StorageManager.getAppMediaInfo());
         storeUpdateConfig(storage.config);
         this.loadAndCreatePlayer(storage.embedServiceUrl, storage.playerType);
       } else {

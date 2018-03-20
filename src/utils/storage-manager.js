@@ -22,16 +22,8 @@ class StorageManager {
     });
   }
 
-  static setAppMediaInfo(mediaInfo) {
-    setItem(`${APP_STORAGE_PREFIX}___mediaInfo`, mediaInfo);
-  }
-
   static getAppStorage() {
     return getItem(`${APP_STORAGE_PREFIX}___data`);
-  }
-
-  static getAppMediaInfo() {
-    return getItem(`${APP_STORAGE_PREFIX}___mediaInfo`);
   }
 }
 

@@ -43,11 +43,11 @@
             <el-collapse-item title="Provider Options" name="provider-options">
               <el-form label-position="left" ref="form" size="mini" :model="options" label-width="120px">
                 <el-form-item label="KS">
-                  <el-input v-model="options.ks"></el-input>
+                  <el-input v-model="options.ks"/>
                 </el-form-item>
                 <div v-if="isOTT()">
                   <el-form-item label="Media Type">
-                    <el-select default-first-option="true" v-model="options.mediaType" placeholder="Select">
+                    <el-select :default-first-option="true" v-model="options.mediaType" placeholder="Select">
                       <el-option
                         v-for="media in mediaTypes"
                         :key="media[1]"
@@ -57,7 +57,7 @@
                     </el-select>
                   </el-form-item>
                   <el-form-item label="Context Type">
-                    <el-select default-first-option="true" v-model="options.contextType" placeholder="Select">
+                    <el-select :default-first-option="true" v-model="options.contextType" placeholder="Select">
                       <el-option
                         v-for="context in contextTypes"
                         :key="context[1]"
@@ -67,10 +67,10 @@
                     </el-select>
                   </el-form-item>
                   <el-form-item label="Protocol">
-                    <el-input placeholder="http/https" v-model="options.protocol"></el-input>
+                    <el-input placeholder="http/https" v-model="options.protocol"/>
                   </el-form-item>
                   <el-form-item label="File Ids">
-                    <el-input placeholder="fileId1, fileId2" v-model="options.fileIds"></el-input>
+                    <el-input placeholder="fileId1, fileId2" v-model="options.fileIds"/>
                   </el-form-item>
                   <el-form-item label="Formats">
                     <el-select
@@ -97,7 +97,6 @@
   import Entries from '../../data/entries'
   import {mapGetters} from 'vuex'
   import {storeUpdateMediaInfo} from '../../store/mutations-helpers'
-  import {StorageManager} from '../../utils/storage-manager'
 
   export default {
     computed: {
@@ -164,7 +163,6 @@
             if (this.options.formats) mediaInfo.formats = this.options.formats;
           }
           storeUpdateMediaInfo(mediaInfo);
-          StorageManager.setAppMediaInfo(mediaInfo);
           this.player.loadMedia(mediaInfo).then(() => this.isLoadingMedia = false);
         }
       },
@@ -231,6 +229,3 @@
     }
   }
 </script>
-
-<style>
-</style>
