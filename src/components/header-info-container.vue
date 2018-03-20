@@ -4,7 +4,7 @@
       <h1>{{title}}</h1>
       <h3>Demo Page</h3>
       <el-row class="version">
-        <el-tag>v{{version}}</el-tag>
+        <el-tag v-if="player">v{{version}}</el-tag>
       </el-row>
       <p class="links">
         <a v-bind:href="docsUrl" target="_blank">Documentation</a> |
@@ -16,13 +16,20 @@
 </template>
 
 <script>
-  import * as KalturaPlayer from 'kaltura-player-js/dist/kaltura-ovp-player'
+  import {mapState} from 'vuex'
 
   export default {
+    computed: {
+      version() {
+        return KalturaPlayer.VERSION;
+      },
+      ...mapState([
+        'player'
+      ])
+    },
     data() {
       return {
         title: 'kaltura-player-js',
-        version: KalturaPlayer.VERSION,
         repoUrl: '//github.com/kaltura/kaltura-player-js',
         docsUrl: '//github.com/kaltura/kaltura-player-js#documentation',
         releasesUrl: '//github.com/kaltura/kaltura-player-js/releases'
